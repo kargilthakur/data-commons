@@ -10,9 +10,38 @@
 <link rel="modulepreload" href="../_observablehq/client.js">
 <link rel="modulepreload" href="../_observablehq/runtime.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.js">
+<link rel="modulepreload" href="../_import/jobs/data_loader.c6e8fc24.js">
 <script type="module">
 
-import "../_observablehq/client.js";
+import {define} from "../_observablehq/client.js";
+
+define({id: "5a44865c", outputs: ["loadDataCommons","displayJsonData"], body: async () => {
+const {loadDataCommons, displayJsonData} = await import("../_import/jobs/data_loader.c6e8fc24.js");
+  
+return {loadDataCommons,displayJsonData};
+}});
+
+define({id: "1a028a3e", inputs: ["loadDataCommons","displayJsonData"], body: (loadDataCommons,displayJsonData) => {
+  document.getElementById('loadDataButton').addEventListener('click', () => 
+    {
+        const apiKey = 'AIzaSyCTI4Xz-UW_G2Q2RfknhcfdAnTHq5X5XuI';
+        const dcidInput = document.getElementById('dcidInput').value;
+        const propertyInput = document.getElementById('propertyInput').value;
+
+        console.log('DCID:', dcidInput);
+        console.log('Property:', propertyInput);
+
+        loadDataCommons(apiKey, dcidInput, propertyInput).then(data => {
+            console.log(data);
+            displayJsonData(data);
+            })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+            });
+        
+    }
+  );
+}});
 
 </script>
 <input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
@@ -50,6 +79,10 @@ import "../_observablehq/client.js";
 <script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <aside id="observablehq-toc" data-selector="h1:not(:first-of-type), h2:first-child, :not(h1) + h2">
 <nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#usage-example">Usage Example</a></li>
+</ol>
 </nav>
 </aside>
 <div id="observablehq-center">
@@ -57,9 +90,59 @@ import "../_observablehq/client.js";
 <p><a href="../">Data Commons</a></p>
 <h1 id="good-paying-jobs" tabindex="-1"><a class="observablehq-header-anchor" href="#good-paying-jobs">Good Paying Jobs</a></h1>
 <p>Goal 1. No Poverty - Good Paying Jobs and Assistance</p>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+
+  input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  #resultContainer {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+</style>
+<h2 id="usage-example" tabindex="-1"><a class="observablehq-header-anchor" href="#usage-example">Usage Example</a></h2>
+<p><button id="loadDataButton">Load Data Commons</button></p>
+<div>
+  <label for="dcidInput">Enter DCID:</label>
+  <input type="text" id="dcidInput" placeholder="e.g., geoId/06">
+</div>
+<div>
+  <label for="propertyInput">Enter Property:</label>
+  <input type="text" id="propertyInput" placeholder="e.g., <-">
+</div>
+<div id="resultContainer"></div>
+<div id="cell-5a44865c" class="observablehq observablehq--block"></div>
+<div id="cell-1a028a3e" class="observablehq observablehq--block"></div>
+<hr>
 </main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="../nemo/"><span>Placeholder</span></a><a rel="next" href="../internet/"><span>Placeholder</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="2024-03-11T19:00:08">Mar 11, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="2024-03-12T14:53:57">Mar 12, 2024</a>.</div>
 </footer>
 </div>

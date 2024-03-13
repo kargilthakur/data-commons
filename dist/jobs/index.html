@@ -112,7 +112,7 @@ define({id: "fddc5e6c", body: () => {
 <nav>
 <div>Contents</div>
 <ol>
-<li class="observablehq-secondary-link"><a href="#usage-example">Usage Example</a></li>
+<li class="observablehq-secondary-link"><a href="#api-demo">API Demo</a></li>
 </ol>
 </nav>
 </aside>
@@ -174,15 +174,25 @@ define({id: "fddc5e6c", body: () => {
       background-color: yellow;
     }
   </style>
-<h2 id="usage-example" tabindex="-1"><a class="observablehq-header-anchor" href="#usage-example">Usage Example</a></h2>
+<h2 id="api-demo" tabindex="-1"><a class="observablehq-header-anchor" href="#api-demo">API Demo</a></h2>
+<p>You can find the desired DCID and property from these sources:</p>
+<ul>
+<li><a href="https://datacommons.org/place">Data Commons Place Browser</a></li>
+<li><a href="https://datacommons.org/tools/statvar">Data Commons StatVar Browser</a></li>
+<li><a href="https://datacommons.org/browser/">Data Commons Browser</a></li>
+</ul>
+<p>For API examples, you can check:</p>
+<ul>
+<li><a href="https://docs.datacommons.org/api/rest/v2">Data Commons REST API Documentation</a></li>
+</ul>
+<p>Scroll down for more examples.</p>
 <p><button id="loadDataButton">Load Data Commons</button></p>
 <div>
   <label for="dcidInput">Enter DCID:</label>
   <div class="suggestion-container" id="dcidSuggestions">
     <span class="suggestion-bubble">geoId/06</span>
-    <span class="suggestion-bubble">geoId/07</span>
-    <span class="suggestion-bubble">geoId/08</span>
-    <!-- Add more suggestion bubbles here -->
+    <span class="suggestion-bubble">Count_Jobs_EconomicDevelopmentAdministration_JobsCreated</span>
+    <span class="suggestion-bubble">geoId/13</span>
   </div>
   <input type="text" id="dcidInput" placeholder="e.g., geoId/06">
 </div>
@@ -191,12 +201,32 @@ define({id: "fddc5e6c", body: () => {
   <div class="suggestion-container" id="propertySuggestions">
     <span class="suggestion-bubble">&lt;-</span>
     <span class="suggestion-bubble">-&gt;</span>
-    <!-- Add more suggestion bubbles here -->
+    <span class="suggestion-bubble">-&gt;*</span>
+    <span class="suggestion-bubble">-&gt;[nearbyPlaces,landArea]</span>
   </div>
   <input type="text" id="propertyInput" placeholder="e.g., <-">
 </div>
 <div id="resultContainer"></div>
 <p><button id="downloadButton">Download JSON</button></p>
+<h3 id="api-examples--" tabindex="-1"><a class="observablehq-header-anchor" href="#api-examples--">API Examples -</a></h3>
+<p>Single DCID: Displays a list of properties using the symbol <code>-&gt;</code>.</p>
+<p>For example, to find the properties related to <code>geoId/06</code>:</p>
+<ul>
+<li>DCID: geoId/06</li>
+<li>Property: -&gt;</li>
+</ul>
+<p>Single DCID: Displays all values of its properties using <code>-&gt;*</code> to indicate all records.</p>
+<p>For example, to display all the properties of <code>Count_Jobs_EconomicDevelopmentAdministration_JobsCreated</code>:</p>
+<ul>
+<li>DCID: Count_Jobs_EconomicDevelopmentAdministration_JobsCreated</li>
+<li>Property: -&gt;*</li>
+</ul>
+<p>To display multiple properties of a single DCID, pass a list in the properties column.</p>
+<p>For example, to display <code>nearbyPlaces</code> and <code>landArea</code> of Georgia:</p>
+<ul>
+<li>DCID: geoID/13</li>
+<li>Property: -&gt;[nearbyPlaces, landArea]</li>
+</ul>
 <div id="cell-7938cf84" class="observablehq observablehq--block"></div>
 <div id="cell-5a44865c" class="observablehq observablehq--block"></div>
 <div id="cell-1a028a3e" class="observablehq observablehq--block"></div>
@@ -204,6 +234,6 @@ define({id: "fddc5e6c", body: () => {
 </main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="../nemo/"><span>Placeholder</span></a><a rel="next" href="../internet/"><span>Placeholder</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="2024-03-12T16:58:00">Mar 12, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="2024-03-13T10:41:46">Mar 13, 2024</a>.</div>
 </footer>
 </div>

@@ -58,7 +58,19 @@ Goal 1. No Poverty - Good Paying Jobs and Assistance
     }
   </style>
 
-## Usage Example
+## API Demo
+
+You can find the desired DCID and property from these sources:
+
+- [Data Commons Place Browser](https://datacommons.org/place)
+- [Data Commons StatVar Browser](https://datacommons.org/tools/statvar)
+- [Data Commons Browser](https://datacommons.org/browser/)
+
+For API examples, you can check:
+
+- [Data Commons REST API Documentation](https://docs.datacommons.org/api/rest/v2)
+
+Scroll down for more examples.
 
 <button id="loadDataButton">Load Data Commons</button>
 
@@ -66,9 +78,9 @@ Goal 1. No Poverty - Good Paying Jobs and Assistance
   <label for="dcidInput">Enter DCID:</label>
   <div class="suggestion-container" id="dcidSuggestions">
     <span class="suggestion-bubble">geoId/06</span>
-    <span class="suggestion-bubble">geoId/07</span>
-    <span class="suggestion-bubble">geoId/08</span>
-    <!-- Add more suggestion bubbles here -->
+    <span class="suggestion-bubble">Count_Jobs_EconomicDevelopmentAdministration_JobsCreated</span>
+    <span class="suggestion-bubble">geoId/13</span>
+   
   </div>
   <input type="text" id="dcidInput" placeholder="e.g., geoId/06">
 </div>
@@ -78,7 +90,8 @@ Goal 1. No Poverty - Good Paying Jobs and Assistance
   <div class="suggestion-container" id="propertySuggestions">
     <span class="suggestion-bubble"><-</span>
     <span class="suggestion-bubble">-></span>
-    <!-- Add more suggestion bubbles here -->
+    <span class="suggestion-bubble">->*</span>
+    <span class="suggestion-bubble">->[nearbyPlaces,landArea]</span>
   </div>
   <input type="text" id="propertyInput" placeholder="e.g., <-">
 </div>
@@ -86,6 +99,27 @@ Goal 1. No Poverty - Good Paying Jobs and Assistance
 <div id="resultContainer"></div>
 
 <button id="downloadButton">Download JSON</button>
+
+### API Examples - 
+
+Single DCID: Displays a list of properties using the symbol `->`.
+
+For example, to find the properties related to `geoId/06`:
+- DCID: geoId/06
+- Property: ->
+
+Single DCID: Displays all values of its properties using `->*` to indicate all records.
+
+For example, to display all the properties of `Count_Jobs_EconomicDevelopmentAdministration_JobsCreated`:
+- DCID: Count_Jobs_EconomicDevelopmentAdministration_JobsCreated
+- Property: ->*
+
+To display multiple properties of a single DCID, pass a list in the properties column.
+
+For example, to display `nearbyPlaces` and `landArea` of Georgia:
+- DCID: geoID/13
+- Property: ->[nearbyPlaces, landArea]
+
 
 ```js
   function addSuggestionToInput(suggestion, inputId) {
